@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UYONO — Technology-enabled learning for Nigerian students preparing for JAMB, WAEC. Focused teaching, weekly CBT simulation, progress tracking, and academic guidance.">
+<meta name="og:title" content="UYONO — Learn what comes next.">
+<meta name="og:description" content="Technology-enabled learning for Nigerian students preparing for JAMB, WAEC.">
+<meta name="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>UYONO — Learn what comes next.</title>
+<style>
+:root{
+  --ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--card:#fff;
+  --accent:#1d4ed8;--accent2:#0f766e;--soft:#eff6ff;
+}
+*{box-sizing:border-box} 
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+html{scroll-behavior:smooth}
+.shell{max-width:1180px;margin:auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.12em}
+.mark{width:38px;height:38px;border-radius:12px;background:var(--ink);color:white;display:grid;place-items:center}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a,.links button{padding:10px 12px;border:0;background:transparent;border-radius:10px;cursor:pointer;color:#334155;transition:all 0.2s ease}
+.links a:hover,.links button:hover{background:#f0f4f8;color:var(--accent)}
+.links .primary{background:var(--ink);color:#fff;transition:all 0.2s ease}
+.links .primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(29,78,216,.2)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;padding:72px 0 54px}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+h1{font-size:clamp(48px,8vw,82px);line-height:.95;letter-spacing:-.05em;margin:14px 0 18px}
+h2{font-size:34px;letter-spacing:-.03em;margin:0 0 12px}
+h3{margin:0 0 8px}
+p{line-height:1.65;color:#475569}
+.hero p{font-size:19px;max-width:720px}
+.hero-card,.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 8px 28px rgba(15,23,42,.05);transition:all 0.3s ease}
+.card:hover{box-shadow:0 12px 36px rgba(15,23,42,.12);transform:translateY(-2px)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;padding:13px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer;transition:all 0.2s ease;align-items:center;gap:6px}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(29,78,216,.2)}
+.btn-secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-secondary:hover{border-color:var(--accent);background:var(--soft);color:var(--accent)}
+.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.section{padding:54px 0}
+.metric{padding:18px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+.metric strong{display:block;font-size:28px;margin-top:4px}
+.label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step{padding:18px;background:#fff;border:1px solid var(--line);border-radius:18px;transition:all 0.2s ease}
+.step:hover{border-color:var(--accent);background:var(--soft)}
+.step b{display:block;margin-bottom:6px;color:var(--accent)}
+.price{font-size:44px;font-weight:900;letter-spacing:-.04em}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:7px}
+label{font-size:13px;font-weight:800;color:#334155}
+input,select,textarea{width:100%;padding:12px 13px;border:1px solid #cbd5e1;border-radius:12px;background:#fff;font:inherit;transition:all 0.2s ease}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+input.error,select.error{border-color:#dc2626}
+.error-msg{font-size:12px;color:#dc2626;margin-top:4px}
+.notice{padding:14px 16px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;color:#475569;font-size:14px}
+.notice.success{background:#ecfdf5;border-color:#86efac;color:#166534}
+footer{padding:34px 0 48px;border-top:1px solid var(--line);margin-top:50px;color:#64748b;font-size:14px}
+.footer-links{display:flex;gap:24px;margin-top:16px;flex-wrap:wrap}
+.footer-links a{color:#0f766e;text-decoration:underline;transition:color 0.2s ease}
+.footer-links a:hover{color:var(--accent)}
+@media(max-width:850px){
+  .hero,.grid,.grid2,.form-grid,.flow{grid-template-columns:1fr}
+  .nav{align-items:flex-start;padding:14px 0;flex-direction:column}
+  .links{flex-direction:column;width:100%}
+  .links a{width:100%;padding:12px}
+  h1{font-size:52px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell nav">
+    <div class="brand"><div class="mark">U</div>UYONO</div>
+    <nav class="links" aria-label="Main navigation">
+      <a href="#programmes">Programmes</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#diagnostic">Diagnostic</a>
+      <a href="#parents">For Parents</a>
+      <a href="portal.html">Login</a>
+      <a class="primary" href="#enrol">Join UYONO</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="shell hero">
+  <div>
+    <div class="eyebrow">Technology-enabled learning for Nigerian students</div>
+    <h1>Learn what comes next.</h1>
+    <p>Focused teaching, weekly CBT simulation, progress tracking, targeted remediation and practical academic guidance for students preparing for JAMB, WAEC and their next academic step.</p>
+    <div class="row" style="margin-top:24px">
+      <a class="btn btn-primary" href="#enrol">Join the founding cohort</a>
+      <a class="btn btn-secondary" href="#diagnostic">Take the free Diagnostic</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="label">UYONO Founding Cohort</div>
+    <div class="price" style="margin-top:8px">₦20k–₦25k</div>
+    <p>Monthly • Monday–Friday • 3 hours daily • Weekly CBT • Progress reports • Weak-topic clinics.</p>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:18px">
+      <div class="metric"><span class="label">Days</span><strong>5</strong></div>
+      <div class="metric"><span class="label">Hours</span><strong>15</strong></div>
+      <div class="metric"><span class="label">CBT</span><strong>Weekly</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="programmes" class="section">
+  <div class="shell">
+    <div class="eyebrow">Programmes</div><h2>Built around where the learner is going</h2>
+    <div class="grid">
+      <div class="card"><div class="label">Science</div><h3>Medicine • Engineering • STEM</h3><p>English, Mathematics, Biology, Chemistry, Physics and relevant electives.</p></div>
+      <div class="card"><div class="label">Business</div><h3>Accounting • Economics • Commerce</h3><p>English, Mathematics, Economics, Accounting, Commerce and relevant electives.</p></div>
+      <div class="card"><div class="label">Humanities</div><h3>Law • Arts • Social Sciences</h3><p>English, Government, Literature, CRS/IRS, Economics and relevant electives.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="section">
+  <div class="shell">
+    <div class="eyebrow">How UYONO works</div><h2>We measure learning, not just attendance.</h2>
+    <div class="flow">
+      <div class="step"><b>1. Diagnose</b><span>Baseline CBT and learner profile.</span></div>
+      <div class="step"><b>2. Teach</b><span>Focused classes across core subjects.</span></div>
+      <div class="step"><b>3. Practise</b><span>Assignments and exam-style questions.</span></div>
+      <div class="step"><b>4. Measure</b><span>Weekly CBT simulation and analytics.</span></div>
+      <div class="step"><b>5. Improve</b><span>Weak-topic clinics and new targets.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="section">
+  <div class="shell grid2">
+    <div class="card">
+      <div class="label">Founding cohort</div><div class="price">₦20,000</div><p>Per month for the first limited group of founding learners.</p>
+      <p>✓ Monday–Friday classes<br>✓ Weekly CBT simulation<br>✓ Progress tracking<br>✓ Monthly parent report<br>✓ Weak-topic intervention</p>
+      <button class="btn btn-primary" onclick="scrollToSection('enrol')">Apply now</button>
+    </div>
+    <div class="card">
+      <div class="label">Standard</div><div class="price">₦25,000</div><p>Per month after the founding allocation is filled.</p>
+      <p>✓ Full classroom programme<br>✓ Weekly CBT simulation<br>✓ Personal analytics<br>✓ Parent progress report<br>✓ Academic guidance</p>
+      <button class="btn btn-primary" onclick="scrollToSection('enrol')">Register interest</button>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostic" class="section">
+  <div class="shell grid2">
+    <div>
+      <div class="eyebrow">UYONO Diagnostic</div><h2>What would you score if JAMB were tomorrow?</h2>
+      <p>Take a free assessment and receive a baseline score, subject breakdown, weak areas and recommended study focus.</p>
+      <div class="notice">The public website handles discovery and lead capture. Onboarding, CBT, payments and progress data belong inside the private UYONO Portal.</div>
+    </div>
+    <div class="card">
+      <form id="diagnosticForm" onsubmit="handleDiagnostic(event)">
+        <div class="field">
+          <label for="diagName">Student name *</label>
+          <input id="diagName" type="text" placeholder="Full name" required>
+          <div id="diagNameError" class="error-msg"></div>
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label for="diagPhone">Phone *</label>
+          <input id="diagPhone" type="tel" placeholder="+234..." required>
+          <div id="diagPhoneError" class="error-msg"></div>
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label for="diagTrack">Track *</label>
+          <select id="diagTrack" required>
+            <option value="">Select a track</option>
+            <option value="Science">Science</option>
+            <option value="Business">Business</option>
+            <option value="Humanities">Humanities</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:16px">Start free Diagnostic</button>
+      </form>
+      <p id="diagMsg" class="notice" style="display:none;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+
+<section id="parents" class="section">
+  <div class="shell">
+    <div class="eyebrow">For Parents</div><h2>Know whether your child is actually improving.</h2>
+    <div class="grid">
+      <div class="card"><h3>Attendance</h3><p>See whether classes are being attended consistently.</p></div>
+      <div class="card"><h3>CBT Progress</h3><p>Track weekly scores instead of waiting until examination day.</p></div>
+      <div class="card"><h3>Academic Reports</h3><p>Receive clear summaries of strengths, weak areas and next targets.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="enrol" class="section">
+  <div class="shell grid2">
+    <div>
+      <div class="eyebrow">Join UYONO</div><h2>Founding learner registration</h2>
+      <p>Register interest now. The private portal handles full onboarding, academic profiles, CBT and progress tracking.</p>
+    </div>
+    <div class="card">
+      <form id="enrolForm" onsubmit="handleEnrolment(event)">
+        <div class="form-grid">
+          <div class="field">
+            <label for="leadName">Student name *</label>
+            <input id="leadName" type="text" placeholder="Full name" required>
+            <div id="leadNameError" class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="leadAge">Age *</label>
+            <input id="leadAge" type="number" min="14" max="20" placeholder="14–20" required>
+            <div id="leadAgeError" class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="leadParent">Parent/guardian phone *</label>
+            <input id="leadParent" type="tel" placeholder="+234..." required>
+            <div id="leadParentError" class="error-msg"></div>
+          </div>
+          <div class="field">
+            <label for="leadTrack">Track *</label>
+            <select id="leadTrack" required>
+              <option value="">Select a track</option>
+              <option value="Science">Science</option>
+              <option value="Business">Business</option>
+              <option value="Humanities">Humanities</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:16px">Submit interest</button>
+      </form>
+      <p id="leadMsg" class="notice" style="display:none;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="shell">
+    <div>
+      <strong>UYONO</strong> — Learn what comes next.
+      <div class="footer-links">
+        <a href="#programmes">Programmes</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://www.twitter.com" target="_blank">Twitter</a>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:12px">Public website V2 prototype</p>
+  </div>
+</footer>
+
+<script>
+const CONFIG = {
+  DEMO_MODE: true,
+  STORAGE_KEYS: {
+    PUBLIC_LEAD: 'uyonoPublicLead',
+    ENROLMENT_LEAD: 'uyonoEnrolmentLead'
+  },
+  VALIDATION: {
+    NAME_MIN: 2,
+    PHONE_PATTERN: /^[\d\s\-\+()]{10,}$/,
+    AGE_MIN: 14,
+    AGE_MAX: 20
+  }
+};
+
+function validateField(fieldId, fieldType) {
+  const field = document.getElementById(fieldId);
+  const errorId = fieldId + 'Error';
+  const errorEl = document.getElementById(errorId);
+  let isValid = true;
+  let errorMsg = '';
+
+  if (!field) return true;
+
+  const value = field.value.trim();
+
+  if (!value) {
+    isValid = false;
+    errorMsg = 'This field is required';
+  } else if (fieldType === 'name' && value.length < CONFIG.VALIDATION.NAME_MIN) {
+    isValid = false;
+    errorMsg = 'Name must be at least 2 characters';
+  } else if (fieldType === 'phone' && !CONFIG.VALIDATION.PHONE_PATTERN.test(value)) {
+    isValid = false;
+    errorMsg = 'Please enter a valid phone number';
+  } else if (fieldType === 'age') {
+    const age = parseInt(value);
+    if (isNaN(age) || age < CONFIG.VALIDATION.AGE_MIN || age > CONFIG.VALIDATION.AGE_MAX) {
+      isValid = false;
+      errorMsg = `Age must be between ${CONFIG.VALIDATION.AGE_MIN} and ${CONFIG.VALIDATION.AGE_MAX}`;
+    }
+  }
+
+  if (errorEl) {
+    errorEl.textContent = errorMsg;
+    field.classList.toggle('error', !isValid);
+  }
+
+  return isValid;
+}
+
+function validateForm(formId, fieldConfigs) {
+  let allValid = true;
+  fieldConfigs.forEach(({ fieldId, type }) => {
+    if (!validateField(fieldId, type)) {
+      allValid = false;
+    }
+  });
+  return allValid;
+}
+
+function handleDiagnostic(event) {
+  event.preventDefault();
+  
+  const isValid = validateForm('diagnosticForm', [
+    { fieldId: 'diagName', type: 'name' },
+    { fieldId: 'diagPhone', type: 'phone' }
+  ]);
+
+  if (!isValid) return;
+
+  try {
+    const lead = {
+      name: document.getElementById('diagName').value.trim(),
+      phone: document.getElementById('diagPhone').value.trim(),
+      track: document.getElementById('diagTrack').value
+    };
+
+    if (!localStorage) {
+      throw new Error('localStorage not available');
+    }
+
+    localStorage.setItem(CONFIG.STORAGE_KEYS.PUBLIC_LEAD, JSON.stringify(lead));
+    
+    if (CONFIG.DEMO_MODE) {
+      const msgEl = document.getElementById('diagMsg');
+      msgEl.style.display = 'block';
+      msgEl.classList.add('success');
+      msgEl.textContent = '✓ Diagnostic initiated. In production, this redirects to the assessment portal.';
+      document.getElementById('diagnosticForm').reset();
+      
+      setTimeout(() => {
+        // In production: window.location.href = 'portal.html?mode=student';
+      }, 2000);
+    } else {
+      window.location.href = 'portal.html?mode=student';
+    }
+  } catch (error) {
+    const msgEl = document.getElementById('diagMsg');
+    msgEl.style.display = 'block';
+    msgEl.textContent = 'Error saving your information. Please try again.';
+    console.error('Diagnostic form error:', error);
+  }
+}
+
+function handleEnrolment(event) {
+  event.preventDefault();
+
+  const isValid = validateForm('enrolForm', [
+    { fieldId: 'leadName', type: 'name' },
+    { fieldId: 'leadAge', type: 'age' },
+    { fieldId: 'leadParent', type: 'phone' }
+  ]);
+
+  if (!isValid) return;
+
+  try {
+    const lead = {
+      name: document.getElementById('leadName').value.trim(),
+      age: parseInt(document.getElementById('leadAge').value),
+      parent: document.getElementById('leadParent').value.trim(),
+      track: document.getElementById('leadTrack').value,
+      timestamp: new Date().toISOString()
+    };
+
+    if (!localStorage) {
+      throw new Error('localStorage not available');
+    }
+
+    localStorage.setItem(CONFIG.STORAGE_KEYS.ENROLMENT_LEAD, JSON.stringify(lead));
+    
+    const msgEl = document.getElementById('leadMsg');
+    msgEl.style.display = 'block';
+    msgEl.classList.add('success');
+    msgEl.textContent = '✓ Interest submitted successfully! We\'ll contact you within 24 hours.';
+    
+    document.getElementById('enrolForm').reset();
+    
+    // Clear success message after 5 seconds
+    setTimeout(() => {
+      msgEl.style.display = 'none';
+      msgEl.classList.remove('success');
+    }, 5000);
+  } catch (error) {
+    const msgEl = document.getElementById('leadMsg');
+    msgEl.style.display = 'block';
+    msgEl.classList.remove('success');
+    msgEl.textContent = 'Error saving your information. Please try again.';
+    console.error('Enrolment form error:', error);
+  }
+}
+
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Clear error messages on input
+document.addEventListener('input', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+    const errorId = e.target.id + 'Error';
+    const errorEl = document.getElementById(errorId);
+    if (errorEl) {
+      errorEl.textContent = '';
+      e.target.classList.remove('error');
+    }
+  }
+});
+</script>
+</body>
+</html>
